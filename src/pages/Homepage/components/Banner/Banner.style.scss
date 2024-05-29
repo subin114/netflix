@@ -1,0 +1,82 @@
+.Banner {
+  height: 56vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  &::before {
+    content: "";
+    background-image: linear-gradient(to top, #141414, transparent);
+    position: absolute;
+    left: 0;
+    height: 56vh;
+    width: 100%;
+    backdrop-filter: blur(4px);
+  }
+
+  .banner-info {
+    color: white;
+    position: absolute;
+    z-index: 3;
+    width: 36%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+
+    .title {
+      font-size: 3rem;
+      letter-spacing: -1.3px;
+      margin-bottom: 0;
+    }
+
+    .detail {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0;
+
+      span:nth-of-type(1) {
+        font-size: 14px;
+
+        &::before {
+          content: "Score";
+          font-family: "Font Awesome 5 Free";
+          background-color: #b99909;
+          width: 15px;
+          height: 14px;
+          border-radius: 20px;
+          font-size: 13px;
+          padding: 2px 5px;
+          margin-right: 5px;
+        }
+      }
+
+      span:nth-of-type(2) {
+        font-size: 14px;
+
+        &::before {
+          content: "Release Date";
+          // font-family: "Font Awesome 6 Solid";
+          // content: "\f005";
+          background-color: #b9090b;
+          width: 15px;
+          height: 14px;
+          border-radius: 20px;
+          font-size: 13px;
+          padding: 2px 5px;
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .overview {
+      text-align: justify;
+      font-weight: 300;
+      letter-spacing: 0.3px;
+      margin-bottom: 0;
+    }
+  }
+}
