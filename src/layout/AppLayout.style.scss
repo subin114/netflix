@@ -1,0 +1,38 @@
+.AppLayout {
+  .logo {
+    width: 5.5rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .menu {
+    color: #fff;
+  }
+
+  .search {
+    .search-btn {
+      background-color: transparent;
+      border: transparent;
+      color: #fff;
+
+      &:focus {
+        background-color: transparent;
+      }
+    }
+
+    .search-input {
+      border-radius: 0;
+      border: transparent;
+      font-size: 14px;
+      background-color: rgb(59, 59, 59);
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+  }
+}

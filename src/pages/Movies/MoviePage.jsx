@@ -1,7 +1,7 @@
 import "./MoviePage.style.scss";
 
 const MoviePage = () => {
-  return <div></div>;
+  return <div>movepage</div>;
 };
 
 export default MoviePage;
