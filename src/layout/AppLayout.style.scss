@@ -24,10 +24,10 @@
     }
 
     .search-input {
-      border-radius: 0;
+      border-radius: 3px;
       border: transparent;
       font-size: 14px;
-      background-color: rgb(59, 59, 59);
+      background-color: rgba(59, 59, 59, 0.747);
 
       &:focus {
         outline: none;

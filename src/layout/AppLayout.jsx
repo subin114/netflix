@@ -36,7 +36,7 @@ const AppLayout = () => {
               </Button>
               <Form.Control
                 type="search"
-                placeholder="제목, 사람, 장르"
+                placeholder="Search ..."
                 className="me-2 search-input"
                 aria-label="Search"
               />
