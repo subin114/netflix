@@ -3,10 +3,14 @@
 
   .main-title {
     margin-left: 20px;
+    font-weight: 300;
+    letter-spacing: 1px;
   }
 
   .carousel-container {
     overflow: hidden;
     height: 390px;
+    margin-top: -30px;
+    margin-bottom: 10px;
   }
 }
