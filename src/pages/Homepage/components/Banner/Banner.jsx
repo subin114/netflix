@@ -5,7 +5,7 @@ import Spinner from "react-bootstrap/Spinner";
 
 const Banner = () => {
   const { data, isLoading, isError, error } = usePopularMoviesQuery();
-  console.log("ddd", data);
+  // console.log("ddd", data);
 
   if (isLoading) {
     return (
