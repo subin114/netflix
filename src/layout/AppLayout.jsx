@@ -16,7 +16,10 @@ const AppLayout = () => {
           <Navbar.Brand href="/" className="logo">
             <img src="src/assets/logo.png" alt="netflix" />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Toggle
+            aria-controls="navbarScroll"
+            className="category-btn"
+          />
           <Navbar.Collapse id="navbarScroll">
             <Nav
               className="me-auto my-2 my-lg-0"

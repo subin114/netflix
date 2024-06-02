@@ -42,7 +42,7 @@ const PopularMovieSlide = () => {
       breakpoint: { max: 1300, min: 1080 },
       items: 4,
     },
-    tablet: {
+    tablet1: {
       breakpoint: { max: 1080, min: 865 },
       items: 3,
     },
@@ -58,7 +58,7 @@ const PopularMovieSlide = () => {
 
   return (
     <div className="PopularMovieSlide">
-      <h3>Popular Movies</h3>
+      <h3 className="main-title">Popular Movies</h3>
       <Carousel
         infinite={true} // 무한 반복
         centerMode={true} // 센터에서 보여지게
