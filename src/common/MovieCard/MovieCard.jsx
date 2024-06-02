@@ -2,8 +2,22 @@ import { Badge } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons";
 import "./MovieCard.style.scss";
+import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
 
 const MovieCard = ({ movie }) => {
+  const { data: genreData } = useMovieGenreQuery();
+  console.log("genreData", genreData);
+
+  const showGenre = (genreIdList) => {
+    if (!genreData) return [];
+    const genreNameList = genreIdList.map((id) => {
+      const genreObj = genreData.find((genre) => genre.id === id);
+      return genreObj.name;
+    });
+
+    return genreNameList;
+  };
+
   return (
     <div
       className="MovieCard"
@@ -15,14 +29,14 @@ const MovieCard = ({ movie }) => {
         <div className="card-top">
           <h1 className="title">{movie.title}</h1>
           <div className="badge-wrap">
-            {movie.genre_ids.map((id) => (
+            {showGenre(movie.genre_ids).map((genre, idx) => (
               <Badge
                 bg="danger"
-                key={id}
+                key={idx}
                 style={{ marginRight: "3px" }}
                 className="badge"
               >
-                {id}
+                {genre}
               </Badge>
             ))}
           </div>
