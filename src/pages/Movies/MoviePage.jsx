@@ -27,7 +27,7 @@ const MoviePage = () => {
     keyword,
     page,
   });
-  console.log("data", data);
+  // console.log("data", data);
 
   if (isLoading) {
     return (
@@ -41,7 +41,7 @@ const MoviePage = () => {
   }
 
   return (
-    <div>
+    <div className="MoviePage">
       <Container>
         <Row>
           <Col lg={4} xs={12}>
@@ -51,7 +51,13 @@ const MoviePage = () => {
           <Col lg={8} xs={12}>
             <Row>
               {data?.results.map((movie, idx) => (
-                <Col key={idx} lg={4} xs={12}>
+                <Col
+                  key={idx}
+                  lg={3}
+                  xs={12}
+                  className="card-wrap"
+                  // style={{ background: "yellow" }}
+                >
                   <MovieCard movie={movie} />
                 </Col>
               ))}

@@ -1,0 +1,14 @@
+.MovieDetail {
+  background-color: red;
+  margin-top: 80px;
+  // position: relative;
+
+  .modal-wrap {
+    z-index: 10000;
+    // position: absolute;
+    // top: 180px;
+    // left: 0;
+    width: 80%;
+    height: auto;
+  }
+}

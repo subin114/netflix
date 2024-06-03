@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons";
 import "./MovieCard.style.scss";
 import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
+import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
   const { data: genreData } = useMovieGenreQuery();
@@ -18,12 +19,16 @@ const MovieCard = ({ movie }) => {
     return genreNameList;
   };
 
+  const navigate = useNavigate();
+
   return (
     <div
       className="MovieCard"
       style={{
         backgroundImage: `url(https://media.themoviedb.org/t/p/original${movie.poster_path})`,
       }}
+      onClick={() => navigate(`/movies/${movie.id}`)}
+      // onClick={handleShow}
     >
       <div className="overlay">
         <div className="card-top">
