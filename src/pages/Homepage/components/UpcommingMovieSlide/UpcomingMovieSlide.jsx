@@ -22,7 +22,7 @@ const UpcomingMovieSlide = () => {
   return (
     <div>
       <MovieSlider
-        title="Upcoming Movies"
+        title="넷플릭스에 새로 올라온 콘텐츠"
         movies={data.results}
         responsive={responsive}
       />

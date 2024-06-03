@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "../utils/api";
 
-// Top Rated Movies
+// 평점 높은 영화
 const fetchTopRatedMovies = () => {
   return api.get(`/movie/top_rated`);
 };

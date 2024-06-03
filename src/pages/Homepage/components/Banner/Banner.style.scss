@@ -1,5 +1,5 @@
 .Banner {
-  height: 56vh;
+  height: 83vh;
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -11,7 +11,7 @@
     background-image: linear-gradient(to top, #141414, transparent);
     position: absolute;
     left: 0;
-    height: 56vh;
+    height: 83vh;
     width: 100%;
   }
 
@@ -19,12 +19,12 @@
     color: white;
     position: absolute;
     z-index: 3;
-    width: 550px;
+    width: 600px;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 20px;
+    padding-left: 30px;
 
     .title {
       font-size: 2.8rem;
@@ -42,14 +42,12 @@
         font-size: 14px;
 
         &::before {
-          content: "Score";
-          font-family: "Font Awesome 5 Free";
-          background-color: #b99909;
+          content: "평점";
+          background: linear-gradient(to top, #8b5f0bb0 50%, transparent 15%);
           width: 15px;
           height: 14px;
-          border-radius: 20px;
-          font-size: 13px;
-          padding: 2px 5px;
+          font-size: 14px;
+          padding: 3px;
           margin-right: 5px;
         }
       }
@@ -58,15 +56,15 @@
         font-size: 14px;
 
         &::before {
-          content: "Release Date";
+          content: "개봉일";
           // font-family: "Font Awesome 6 Solid";
           // content: "\f005";
-          background-color: #b9090b;
+          // background-color: #b9090b;
+          background: linear-gradient(to top, #b9090c 50%, transparent 15%);
           width: 15px;
           height: 14px;
-          border-radius: 20px;
           font-size: 13px;
-          padding: 2px 5px;
+          padding: 3px;
           margin-right: 5px;
         }
       }
@@ -77,6 +75,14 @@
       font-weight: 300;
       letter-spacing: 0.3px;
       margin-bottom: 0;
+    }
+  }
+}
+
+@media (max-width: 645px) {
+  .Banner {
+    .banner-info {
+      width: 95%;
     }
   }
 }

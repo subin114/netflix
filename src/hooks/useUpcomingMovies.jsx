@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "../utils/api";
 
-// Upcoming Movies
+// 넷플릭스에 새로 올라온 콘텐츠
 const fetchUpcomingMovies = () => {
   return api.get(`/movie/upcoming`);
 };

@@ -1,51 +1,130 @@
 .AppLayout {
-  z-index: 9999;
-  // position: fixed;
-  // top: 0;
-  // left: 0;
+  position: relative;
 
-  .logo {
-    width: 5.5rem;
+  .navbar {
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.7) 10%,
+      transparent
+    );
+    transition: background-color 0.25s;
+    padding: 0 10px;
 
-    img {
-      width: 100%;
+    &.navbar-scrolled {
+      background-color: #141414;
+    }
+
+    .navbar-container {
       height: 100%;
-    }
-  }
 
-  .category-btn {
-    border: transparent;
+      .logo {
+        width: 6.5rem;
+        margin-right: 30px;
 
-    &:focus {
-      box-shadow: none;
-      outline: none;
-    }
-  }
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
 
-  .menu {
-    color: #fff;
-  }
+      .category-btn {
+        border: transparent;
+        padding: 0;
 
-  .search {
-    .search-btn {
-      background-color: transparent;
-      border: transparent;
-      color: #fff;
+        &:focus {
+          box-shadow: none;
+          outline: none;
+        }
+      }
 
-      &:focus {
-        background-color: transparent;
+      .menu {
+        color: #fff !important;
+        font-size: 14px;
+        font-weight: 300;
+      }
+
+      .search {
+        .search-btn {
+          background-color: transparent;
+          border: transparent;
+          color: #fff;
+
+          &:focus {
+            background-color: transparent;
+          }
+        }
+
+        .search-input {
+          border-radius: 3px;
+          border: transparent;
+          font-size: 14px;
+          background-color: rgba(59, 59, 59, 0.747);
+
+          &:focus {
+            outline: none;
+            box-shadow: none;
+          }
+        }
       }
     }
+  }
+}
 
-    .search-input {
-      border-radius: 3px;
-      border: transparent;
-      font-size: 14px;
-      background-color: rgba(59, 59, 59, 0.747);
+@media (max-width: 991px) {
+  .AppLayout {
+    .navbar {
+      padding: 0;
+      width: 100%;
+      z-index: 9999;
+      position: fixed;
+      top: 0;
+      left: 0;
+      // background-color: #141414;
 
-      &:focus {
-        outline: none;
-        box-shadow: none;
+      .navbar-container {
+        padding: 0;
+        width: 100%;
+        height: 100%;
+
+        .logo {
+          margin-left: 20px;
+          z-index: 9999;
+        }
+
+        .category-btn {
+          margin-right: 20px;
+          filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(180deg);
+          z-index: 9999;
+        }
+
+        .navbar-scroll {
+          position: absolute;
+          top: 80px;
+          left: 0;
+          width: 100%;
+          background-color: #141414;
+          box-shadow: rgba(0, 0, 0, 0.336) 0px 3px 8px;
+
+          .menu {
+            margin: 2px 20px;
+            border-bottom: 1px solid #aaaaaa56;
+
+            &:nth-of-type(6) {
+              border-bottom: 0;
+            }
+          }
+
+          .search {
+            // background-color: red;
+            padding: 25px 10px;
+          }
+        }
       }
     }
   }
