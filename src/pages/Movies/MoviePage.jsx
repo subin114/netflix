@@ -41,50 +41,40 @@ const MoviePage = () => {
 
   return (
     <div className="MoviePage">
-      <Container>
-        <Row>
-          <Col lg={4} xs={12}>
-            필터
-          </Col>
+      {/* 필터 */}
+      <div className="filter">필터 걸자</div>
 
-          <Col lg={8} xs={12}>
-            <Row>
-              {data?.results.map((movie, idx) => (
-                <Col
-                  key={idx}
-                  lg={3}
-                  xs={12}
-                  className="card-wrap"
-                  // style={{ background: "yellow" }}
-                >
-                  <MovieCard movie={movie} />
-                </Col>
-              ))}
-            </Row>
-            <ReactPaginate
-              nextLabel="next >"
-              onPageChange={handlePageClick}
-              pageRangeDisplayed={3}
-              marginPagesDisplayed={2}
-              pageCount={data?.total_pages} // 전체페이지가 몇개인지
-              previousLabel="< previous"
-              pageClassName="page-item"
-              pageLinkClassName="page-link"
-              previousClassName="page-item"
-              previousLinkClassName="page-link"
-              nextClassName="page-item"
-              nextLinkClassName="page-link"
-              breakLabel="..."
-              breakClassName="page-item"
-              breakLinkClassName="page-link"
-              containerClassName="pagination"
-              activeClassName="active"
-              renderOnZeroPageCount={null}
-              forcePage={page - 1}
-            />
-          </Col>
-        </Row>
-      </Container>
+      {/* 영화 목록 */}
+      <div className="list">
+        {data?.results.map((movie, idx) => (
+          <div key={idx} className="card-wrap">
+            <MovieCard movie={movie} />
+          </div>
+        ))}
+      </div>
+
+      {/* 페이지네이션 */}
+      <ReactPaginate
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={2}
+        pageCount={data?.total_pages} // 전체페이지가 몇개인지
+        previousLabel="<"
+        pageClassName="page-item"
+        pageLinkClassName="page-link"
+        previousClassName="page-item"
+        previousLinkClassName="page-link"
+        nextClassName="page-item"
+        nextLinkClassName="page-link"
+        breakLabel="..."
+        breakClassName="page-item"
+        breakLinkClassName="page-link"
+        containerClassName="pagination"
+        activeClassName="active"
+        renderOnZeroPageCount={null}
+        forcePage={page - 1}
+      />
     </div>
   );
 };

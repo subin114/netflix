@@ -24,7 +24,7 @@ const MovieCard = ({ movie }) => {
     <div
       className="MovieCard"
       style={{
-        backgroundImage: `url(https://media.themoviedb.org/t/p/original${movie.poster_path})`,
+        backgroundImage: `url(https://media.themoviedb.org/t/p/original${movie?.poster_path})`,
       }}
       onClick={() => navigate(`/movies/${movie.id}`)}
     >
