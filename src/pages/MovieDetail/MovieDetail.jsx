@@ -5,6 +5,7 @@ import {
   faPlay,
   faHeart,
   faVideo,
+  faCircleUser,
 } from "@fortawesome/free-solid-svg-icons";
 import "./MovieDetail.style.scss";
 import { useAllMovieQuery } from "../../hooks/useAllMovie";
@@ -16,6 +17,7 @@ import { useRecommendsQuery } from "../../hooks/useRecommend";
 import MovieSlider from "../../common/MovieSlider/MovieSlider";
 import { responsive } from "../../constants/responsive";
 import Button from "@mui/material/Button";
+import { useReviews } from "../../hooks/useReviews";
 
 /** 예고편 modal */
 function MyVerticallyCenteredModal({ movie_id, ...props }) {
@@ -77,7 +79,9 @@ const MovieDetail = () => {
   const { data, isLoading, isError, error } = useAllMovieQuery({ movie_id });
 
   const { data: recommendData } = useRecommendsQuery({ movie_id });
-  console.log("recommends", recommendData);
+
+  const { data: reviews } = useReviews({ movie_id });
+  console.log("reviews", reviews);
 
   const [modalShow, setModalShow] = useState(false);
 
@@ -159,8 +163,30 @@ const MovieDetail = () => {
         />
       </div>
 
+      <div className="scroll-animation">
+        <span></span>
+        <span></span>
+        <span></span>scroll
+      </div>
+
       {/* 리뷰 */}
-      <div className="review-wrap">리뷰 들어올 자리</div>
+      <div className="review-wrap">
+        <h2>{data?.title} 관람평</h2>
+        <div className="review-box">
+          {reviews?.slice(0, 4).map((review, idx) => (
+            <div key={idx} className="review">
+              <span>
+                <FontAwesomeIcon
+                  icon={faCircleUser}
+                  style={{ marginRight: "5px" }}
+                />{" "}
+                {review?.author}
+              </span>
+              <p>{review?.content}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
