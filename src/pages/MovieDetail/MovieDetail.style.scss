@@ -1,14 +1,135 @@
 .MovieDetail {
-  background-color: red;
-  margin-top: 80px;
-  // position: relative;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
 
-  .modal-wrap {
-    z-index: 10000;
-    // position: absolute;
-    // top: 180px;
-    // left: 0;
-    width: 80%;
-    height: auto;
+  &::before {
+    content: "";
+    opacity: 0.4;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: #000000c2;
+    filter: blur(20px);
+  }
+
+  // detail-wrap
+  .detail-wrap {
+    width: 90vw;
+    height: 80vh;
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    position: relative;
+
+    // info
+    .info {
+      z-index: 333;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      width: 50%;
+      padding-right: 300px;
+
+      h1 {
+        font-size: 45px;
+      }
+
+      .tagline {
+        margin-bottom: 30px;
+        font-size: 18px;
+        font-style: italic;
+      }
+
+      .sm-info {
+        margin-bottom: 10px;
+
+        span {
+          margin: 0px 3px;
+
+          &:not(:nth-of-type(5))::after {
+            content: "·";
+          }
+        }
+
+        .adult {
+          width: 25px;
+        }
+      }
+
+      p {
+        font-size: 14px;
+        text-align: justify;
+      }
+
+      .modal-90w {
+        z-index: 10000;
+      }
+
+      .modal-btn {
+        background-color: #ffffff52;
+        border: none;
+        width: 200px;
+        font-size: 14px;
+        box-shadow: rgba(63, 63, 63, 0.2) 0px 2px 8px 0px;
+
+        &:focus,
+        &:hover {
+          background-color: #53535373;
+          box-shadow: none;
+        }
+      }
+    }
+
+    // review
+    .review-wrap {
+      z-index: 333;
+      width: 50%;
+      background-color: #0000004b;
+      border-radius: 7px;
+    }
+  }
+}
+
+// modal
+.modal-content {
+  background-color: #141414 !important;
+  color: white !important;
+
+  .modal-header {
+    border-bottom: 1px solid #5050502d;
+
+    h5 {
+      margin: 0;
+      font-weight: 300;
+    }
+
+    .btn-close {
+      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(180deg);
+      box-shadow: none !important;
+    }
+  }
+
+  .modal-body {
+    .youtube {
+      display: flex;
+
+      iframe {
+        width: 100%;
+      }
+    }
+  }
+
+  .modal-footer {
+    border: none;
+    padding: 0;
   }
 }

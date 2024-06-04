@@ -28,13 +28,12 @@ const MovieCard = ({ movie }) => {
         backgroundImage: `url(https://media.themoviedb.org/t/p/original${movie.poster_path})`,
       }}
       onClick={() => navigate(`/movies/${movie.id}`)}
-      // onClick={handleShow}
     >
       <div className="overlay">
         <div className="card-top">
-          <h1 className="title">{movie.title}</h1>
+          <h1 className="title">{movie?.title}</h1>
           <div className="badge-wrap">
-            {showGenre(movie.genre_ids).map((genre, idx) => (
+            {showGenre(movie?.genre_ids).map((genre, idx) => (
               <Badge
                 bg="danger"
                 key={idx}
@@ -53,17 +52,17 @@ const MovieCard = ({ movie }) => {
               icon={faStar}
               style={{ marginRight: "3px", color: "#FFD400" }}
             />
-            {movie.vote_average.toFixed(1)}
+            {movie?.vote_average.toFixed(1)}
           </span>
           <span className="popular">
             <FontAwesomeIcon
               icon={faHeart}
               style={{ marginRight: "3px", color: "#DB4455" }}
             />
-            {Math.trunc(movie.popularity).toLocaleString()}
+            {Math.trunc(movie?.popularity).toLocaleString()}
           </span>
           <span className="adult">
-            {movie.adult ? (
+            {movie?.adult ? (
               <img src="./src/assets/over19.svg" alt="over19" />
             ) : (
               <img src="./src/assets/all.svg" alt="all" />
