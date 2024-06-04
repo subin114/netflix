@@ -9,6 +9,6 @@ export const useAllMovieVideosQuery = ({ movie_id }) => {
   return useQuery({
     queryKey: ["movie-all-videos", { movie_id }],
     queryFn: () => fetchAllMovieVideos({ movie_id }),
-    select: (result) => result.data.results[0],
+    select: (result) => result?.data.results[0],
   });
 };

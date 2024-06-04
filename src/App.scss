@@ -17,3 +17,29 @@ ol,
 li {
   list-style: none;
 }
+
+/* 스크롤바 색상 변경 */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px rgba(126, 126, 126, 0.2);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #8a8a8adc;
+  border-radius: 10px;
+}
+
+/* 드래그 색상 변경 */
+::-moz-selection {
+  background: #f3c630dc;
+}
+::selection {
+  background: #f3c630dc;
+}

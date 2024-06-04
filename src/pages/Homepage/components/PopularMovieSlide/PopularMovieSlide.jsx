@@ -6,7 +6,6 @@ import { responsive } from "../../../../constants/responsive";
 
 const PopularMovieSlide = () => {
   const { data, isLoading, isError, error } = usePopularMoviesQuery();
-  // console.log("popular-movie-data", data);
 
   if (isLoading) {
     return (
@@ -23,7 +22,7 @@ const PopularMovieSlide = () => {
     <div>
       <MovieSlider
         title="보고 또 봐도 좋은 인기 영화"
-        movies={data.results}
+        movies={data?.results}
         responsive={responsive}
       />
     </div>

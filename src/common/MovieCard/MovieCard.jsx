@@ -1,18 +1,17 @@
 import { Badge } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faCheckToSlot } from "@fortawesome/free-solid-svg-icons";
 import "./MovieCard.style.scss";
 import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
 import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
   const { data: genreData } = useMovieGenreQuery();
-  // console.log("genreData", genreData);
 
   const showGenre = (genreIdList) => {
     if (!genreData) return [];
     const genreNameList = genreIdList.map((id) => {
-      const genreObj = genreData.find((genre) => genre.id === id);
+      const genreObj = genreData?.find((genre) => genre.id === id);
       return genreObj.name;
     });
 
@@ -47,25 +46,22 @@ const MovieCard = ({ movie }) => {
         </div>
 
         <div className="card-bottom">
+          <span className="popular">
+            <FontAwesomeIcon icon={faHeart} style={{ marginRight: "3px" }} />
+            {Math.trunc(movie?.popularity).toLocaleString()}
+          </span>
           <span className="avg">
             <FontAwesomeIcon
-              icon={faStar}
-              style={{ marginRight: "3px", color: "#FFD400" }}
+              icon={faCheckToSlot}
+              style={{ marginRight: "3px" }}
             />
             {movie?.vote_average.toFixed(1)}
           </span>
-          <span className="popular">
-            <FontAwesomeIcon
-              icon={faHeart}
-              style={{ marginRight: "3px", color: "#DB4455" }}
-            />
-            {Math.trunc(movie?.popularity).toLocaleString()}
-          </span>
           <span className="adult">
             {movie?.adult ? (
-              <img src="./src/assets/over19.svg" alt="over19" />
+              <img src="../src/assets/over19.svg" alt="over19" />
             ) : (
-              <img src="./src/assets/all.svg" alt="all" />
+              <img src="../src/assets/all.svg" alt="all" />
             )}
           </span>
         </div>

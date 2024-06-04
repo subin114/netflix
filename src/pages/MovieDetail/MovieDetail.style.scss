@@ -1,12 +1,11 @@
 .MovieDetail {
-  padding: 50px 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
+  flex-direction: column;
+  justify-content: space-between;
   background-size: cover;
   background-attachment: fixed;
-  height: 100vh;
+  background-position: center;
+  color: white;
 
   &::before {
     content: "";
@@ -16,86 +15,86 @@
     left: 0px;
     right: 0px;
     bottom: 0px;
-    background-color: #000000c2;
+    background-color: #000000d2;
     filter: blur(20px);
   }
 
-  // detail-wrap
-  .detail-wrap {
-    width: 90vw;
-    height: 80vh;
-    margin-top: 100px;
+  // info
+  .info-wrap {
+    z-index: 3;
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
-    position: relative;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 40%;
+    margin: 80px 0px 100px 30px;
+    height: 50vh;
 
-    // info
-    .info {
-      z-index: 333;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      width: 50%;
-      padding-right: 300px;
+    h1 {
+      font-size: 45px;
+    }
 
-      h1 {
-        font-size: 45px;
-      }
+    .tagline {
+      margin-bottom: 10px;
+      font-size: 18px;
+      font-style: italic;
+    }
 
-      .tagline {
-        margin-bottom: 30px;
-        font-size: 18px;
-        font-style: italic;
-      }
+    .sm-info {
+      margin-bottom: 10px;
+      font-size: 15px;
 
-      .sm-info {
-        margin-bottom: 10px;
+      span {
+        margin: 0px 1px;
 
-        span {
-          margin: 0px 3px;
-
-          &:not(:nth-of-type(5))::after {
-            content: "·";
-          }
-        }
-
-        .adult {
-          width: 25px;
+        &:not(:nth-of-type(5))::after {
+          content: "·";
+          margin-left: 2px;
         }
       }
 
-      p {
-        font-size: 14px;
-        text-align: justify;
-      }
-
-      .modal-90w {
-        z-index: 10000;
-      }
-
-      .modal-btn {
-        background-color: #ffffff52;
-        border: none;
-        width: 200px;
-        font-size: 14px;
-        box-shadow: rgba(63, 63, 63, 0.2) 0px 2px 8px 0px;
-
-        &:focus,
-        &:hover {
-          background-color: #53535373;
-          box-shadow: none;
-        }
+      .adult {
+        width: 20px;
       }
     }
 
-    // review
-    .review-wrap {
-      z-index: 333;
-      width: 50%;
-      background-color: #0000004b;
-      border-radius: 7px;
+    p {
+      font-size: 15px;
+      text-align: justify;
     }
+
+    .modal-90w {
+      z-index: 10000;
+    }
+
+    .play-btn {
+      font-family: "Noto Sans KR", sans-serif;
+      font-size: 14px;
+      padding: 5px 15px;
+      box-shadow: none;
+    }
+
+    .modal-btn {
+      margin-left: 10px;
+      background-color: rgba(97, 97, 97, 0.5);
+      border: none;
+      font-family: "Noto Sans KR", sans-serif;
+      font-size: 14px;
+      padding: 5px 15px;
+      box-shadow: none;
+    }
+  }
+
+  // recommend-wrap
+  .recommends-wrap {
+    z-index: 3;
+  }
+
+  .review-wrap {
+    z-index: 3;
+    background-color: #141414;
+    width: 100%;
+    height: 600px;
   }
 }
 

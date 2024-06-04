@@ -1,6 +1,6 @@
 .Banner {
   height: 83vh;
-  background-position: bottom;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -25,6 +25,7 @@
     flex-direction: column;
     justify-content: center;
     padding-left: 30px;
+    margin-top: 30px;
 
     .title {
       font-size: 2.8rem;
@@ -32,49 +33,27 @@
       margin-bottom: 0;
     }
 
-    .detail {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 10px 0;
-
-      span:nth-of-type(1) {
-        font-size: 14px;
-
-        &::before {
-          content: "평점";
-          background: linear-gradient(to top, #8b5f0bb0 50%, transparent 15%);
-          width: 15px;
-          height: 14px;
-          font-size: 14px;
-          padding: 3px;
-          margin-right: 5px;
-        }
-      }
-
-      span:nth-of-type(2) {
-        font-size: 14px;
-
-        &::before {
-          content: "개봉일";
-          // font-family: "Font Awesome 6 Solid";
-          // content: "\f005";
-          // background-color: #b9090b;
-          background: linear-gradient(to top, #b9090c 50%, transparent 15%);
-          width: 15px;
-          height: 14px;
-          font-size: 13px;
-          padding: 3px;
-          margin-right: 5px;
-        }
-      }
+    .rank {
+      color: #d32f2f;
+      margin: 15px 0;
+      font-size: 20px;
+      font-weight: 500;
     }
 
     .overview {
       text-align: justify;
       font-weight: 300;
+      font-size: 15px;
       letter-spacing: 0.3px;
       margin-bottom: 0;
+    }
+
+    .play-btn {
+      font-family: "Noto Sans KR", sans-serif;
+      font-size: 14px;
+      padding: 5px 15px;
+      box-shadow: none;
+      margin-top: 15px;
     }
   }
 }

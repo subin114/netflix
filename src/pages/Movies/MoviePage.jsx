@@ -27,7 +27,6 @@ const MoviePage = () => {
     keyword,
     page,
   });
-  // console.log("data", data);
 
   if (isLoading) {
     return (

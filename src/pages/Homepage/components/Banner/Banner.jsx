@@ -2,10 +2,12 @@ import "./Banner.style.scss";
 import { usePopularMoviesQuery } from "./../../../../hooks/usePopularMovies";
 import { Alert } from "bootstrap";
 import Spinner from "react-bootstrap/Spinner";
+import { Button } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 const Banner = () => {
   const { data, isLoading, isError, error } = usePopularMoviesQuery();
-  // console.log("ddd", data);
 
   if (isLoading) {
     return (
@@ -27,11 +29,16 @@ const Banner = () => {
     >
       <div className="banner-info">
         <h1 className="title">{data?.results[0].title}</h1>
-        <div className="detail">
-          <span>{data?.results[0].vote_average}</span>
-          <span>{data?.results[0].release_date}</span>
+        <div className="rank">
+          <span>오늘의 영화 순위 1위</span>
         </div>
         <p className="overview">{data?.results[0].overview}</p>
+        <span>
+          <Button variant="contained" color="error" className="play-btn">
+            <FontAwesomeIcon icon={faPlay} style={{ marginRight: "5px" }} />
+            재생
+          </Button>
+        </span>
       </div>
     </div>
   );

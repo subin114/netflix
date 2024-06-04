@@ -43,7 +43,7 @@ const AppLayout = () => {
       >
         <Container fluid className="navbar-container">
           <Navbar.Brand href="/" className="logo">
-            <img src="./src/assets/logo.png" alt="netflix" />
+            <img src="/src/assets/logo.png" alt="netflix" />
           </Navbar.Brand>
           <Navbar.Toggle
             aria-controls="navbarScroll"
