@@ -15,7 +15,11 @@ const PopularMovieSlide = () => {
     );
   }
   if (isError) {
-    return <Alert variant="warning">{error.message}</Alert>;
+    return (
+      <Alert variant="warning" style={{ marginTop: "80px" }}>
+        {error.message}
+      </Alert>
+    );
   }
 
   return (

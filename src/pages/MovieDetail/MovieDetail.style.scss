@@ -163,7 +163,7 @@
   // review wrap
   .review-wrap {
     z-index: 3;
-    background-color: #14141463;
+    background-color: #14141454;
     width: 100%;
     padding: 30px;
     margin: auto;
@@ -173,6 +173,10 @@
 
     h2 {
       margin: 30px 0px 40px;
+
+      span {
+        font-weight: 400;
+      }
     }
 
     .review-box {
@@ -195,10 +199,6 @@
           font-weight: 300;
           text-align: justify;
         }
-      }
-
-      .review:nth-last-child {
-        border-right: 0;
       }
     }
   }

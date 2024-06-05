@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
-import { Spinner, Alert, Container, Row, Col } from "react-bootstrap";
+import { Spinner, Alert } from "react-bootstrap";
 import "./MoviePage.style.scss";
 import { useSearchMovieQuery } from "../../hooks/useSearchMovie";
 import { useSearchParams } from "react-router-dom";
 import MovieCard from "../../common/MovieCard/MovieCard";
 import ReactPaginate from "react-paginate";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { FormControl, Select, MenuItem, InputLabel, Box } from "@mui/material";
 
 // 1. navbar에서 클릭해서 온 경우 => popularMovie 보여주기
 // 2. keyword를 입력해서 온 경우 => keyword와 관련된 영화 보여주기
@@ -15,8 +16,21 @@ import { useState } from "react";
 // 페이지네이션 클릭할 때마다 page 변경
 // page 값이 바뀔 때마다 useSearchMovie에 page까지 넣어서 fetch
 const MoviePage = () => {
+  // 한국어 조사 구분 함수
+  const getKoreanPostposition = (word) => {
+    const lastChar = word[word.length - 1];
+    const hasJongseong = (lastChar) => {
+      const code = lastChar.charCodeAt(0) - 44032;
+      return code % 28 !== 0;
+    };
+
+    return hasJongseong(lastChar) ? "과" : "와";
+  };
+
   const [query, setQuery] = useSearchParams();
   const keyword = query.get("q");
+
+  const postposition = keyword ? getKoreanPostposition(keyword) : "";
 
   const [page, setPage] = useState(1);
   const handlePageClick = ({ selected }) => {
@@ -28,6 +42,67 @@ const MoviePage = () => {
     page,
   });
 
+  // const [popular, setPopular] = useState("");
+  // const [genres, setGenres] = useState("");
+
+  // const handleChange1 = (event) => {
+  //   setPopular(event.target.value);
+  // };
+
+  // const handleChange2 = (event) => {
+  //   setGenres(event.target.value);
+  // };
+
+  // 장르 배열
+  const genres = [
+    { label: "액션", value: 10 },
+    { label: "모험", value: 20 },
+    { label: "애니메이션", value: 30 },
+    { label: "코미디", value: 40 },
+    { label: "범죄", value: 50 },
+    { label: "다큐멘터리", value: 60 },
+    { label: "드라마", value: 70 },
+    { label: "가족", value: 80 },
+    { label: "판타지", value: 90 },
+    { label: "역사", value: 100 },
+    { label: "공포", value: 110 },
+    { label: "음악", value: 120 },
+    { label: "미스터리", value: 130 },
+    { label: "로맨스", value: 140 },
+    { label: "SF", value: 150 },
+    { label: "TV 영화", value: 160 },
+    { label: "스릴러", value: 170 },
+    { label: "전쟁", value: 180 },
+    { label: "서부", value: 190 },
+  ];
+
+  // 영화 정렬 (인기순)
+  const [sortOrder, setSortOrder] = useState("highToLow");
+  const [sortedMovies, setSortedMovies] = useState([]);
+  console.log(sortedMovies);
+
+  const handleSortOrderChange = (e) => setSortOrder(e.target.value);
+
+  // 영화 정렬 (장르별)
+  const [selectedGenre, setSelectedGenre] = useState("");
+
+  const handleGenresChange = (e) => {
+    setSelectedGenre(e.target.value);
+  };
+
+  useEffect(() => {
+    if (data) {
+      const sortedResults = [...data.results].sort((a, b) => {
+        if (sortOrder === "highToLow") {
+          return b.popularity - a.popularity;
+        } else {
+          return a.popularity - b.popularity;
+        }
+      });
+      setSortedMovies(sortedResults);
+    }
+  }, [data, sortOrder]);
+
   if (isLoading) {
     return (
       <Spinner animation="border" role="status">
@@ -36,21 +111,71 @@ const MoviePage = () => {
     );
   }
   if (isError) {
-    return <Alert variant="danger">{error.message}</Alert>;
+    return (
+      <Alert variant="danger" style={{ marginTop: "80px" }}>
+        {error.message}
+      </Alert>
+    );
   }
 
   return (
     <div className="MoviePage">
       {/* 필터 */}
-      <div className="filter">필터 걸자</div>
+      <div className="filter">
+        <FormControl
+          sx={{ m: 1, minWidth: 120 }}
+          size="small"
+          className="select"
+        >
+          <InputLabel id="demo-simple-select-label">인기순</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={sortOrder}
+            label="popular"
+            onChange={handleSortOrderChange}
+          >
+            <MenuItem value="highToLow">인기 높은 순</MenuItem>
+            <MenuItem value="lowToHigh">인기 낮은 순</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl
+          sx={{ m: 1, minWidth: 120 }}
+          size="small"
+          className="select"
+        >
+          <InputLabel id="demo-simple-select-label">장르</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={selectedGenre}
+            label="genres"
+            onChange={handleGenresChange}
+          >
+            {genres.map((item) => (
+              <MenuItem key={item.value} value={item.value}>
+                {item.label}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </div>
 
       {/* 영화 목록 */}
       <div className="list">
-        {data?.results.map((movie, idx) => (
-          <div key={idx} className="card-wrap">
-            <MovieCard movie={movie} />
-          </div>
-        ))}
+        {sortedMovies.length > 0 ? (
+          sortedMovies.map((movie, idx) => (
+            <div key={idx} className="card-wrap">
+              <MovieCard movie={movie} />
+            </div>
+          ))
+        ) : (
+          <p>
+            &quot;{keyword}&quot;
+            {postposition} 일치하는 영화가 없습니다.
+          </p>
+        )}
       </div>
 
       {/* 페이지네이션 */}
@@ -59,7 +184,7 @@ const MoviePage = () => {
         onPageChange={handlePageClick}
         pageRangeDisplayed={3}
         marginPagesDisplayed={2}
-        pageCount={data?.total_pages} // 전체페이지가 몇개인지
+        pageCount={500} // 전체페이지가 몇개인지
         previousLabel="<"
         pageClassName="page-item"
         pageLinkClassName="page-link"

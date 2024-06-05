@@ -33,7 +33,11 @@ function MyVerticallyCenteredModal({ movie_id, ...props }) {
     );
   }
   if (isError) {
-    return <Alert variant="warning">{error.message}</Alert>;
+    return (
+      <Alert variant="warning" style={{ marginTop: "80px" }}>
+        {error.message}
+      </Alert>
+    );
   }
 
   const opts = {
@@ -111,7 +115,11 @@ const MovieDetail = () => {
         <div className="sm-info">
           <span>
             {data?.adult ? (
-              <img src="../src/assets/all.svg" alt="over19" className="adult" />
+              <img
+                src="../src/assets/over19.svg"
+                alt="over19"
+                className="adult"
+              />
             ) : (
               <img src="../src/assets/all.svg" alt="all" className="adult" />
             )}
@@ -171,20 +179,26 @@ const MovieDetail = () => {
 
       {/* 리뷰 */}
       <div className="review-wrap">
-        <h2>{data?.title} 관람평</h2>
+        <h2>
+          [{data?.title}] <span>관람평</span>
+        </h2>
         <div className="review-box">
-          {reviews?.slice(0, 4).map((review, idx) => (
-            <div key={idx} className="review">
-              <span>
-                <FontAwesomeIcon
-                  icon={faCircleUser}
-                  style={{ marginRight: "5px" }}
-                />{" "}
-                {review?.author}
-              </span>
-              <p>{review?.content}</p>
-            </div>
-          ))}
+          {reviews && reviews.length > 0 ? (
+            reviews?.slice(0, 4).map((review, idx) => (
+              <div key={idx} className="review">
+                <span>
+                  <FontAwesomeIcon
+                    icon={faCircleUser}
+                    style={{ marginRight: "5px" }}
+                  />{" "}
+                  {review?.author}
+                </span>
+                <p>{review?.content}</p>
+              </div>
+            ))
+          ) : (
+            <p>작성된 리뷰가 없습니다.</p>
+          )}
         </div>
       </div>
     </div>

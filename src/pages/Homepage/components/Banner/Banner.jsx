@@ -17,7 +17,11 @@ const Banner = () => {
     );
   }
   if (isError) {
-    return <Alert variant="danger">{error.message}</Alert>;
+    return (
+      <Alert variant="danger" style={{ marginTop: "80px" }}>
+        {error.message}
+      </Alert>
+    );
   }
 
   return (
