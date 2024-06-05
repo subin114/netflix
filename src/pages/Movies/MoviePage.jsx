@@ -42,44 +42,31 @@ const MoviePage = () => {
     page,
   });
 
-  // const [popular, setPopular] = useState("");
-  // const [genres, setGenres] = useState("");
-
-  // const handleChange1 = (event) => {
-  //   setPopular(event.target.value);
-  // };
-
-  // const handleChange2 = (event) => {
-  //   setGenres(event.target.value);
-  // };
-
-  // 장르 배열
   const genres = [
-    { label: "액션", value: 10 },
-    { label: "모험", value: 20 },
-    { label: "애니메이션", value: 30 },
-    { label: "코미디", value: 40 },
-    { label: "범죄", value: 50 },
-    { label: "다큐멘터리", value: 60 },
-    { label: "드라마", value: 70 },
-    { label: "가족", value: 80 },
-    { label: "판타지", value: 90 },
-    { label: "역사", value: 100 },
-    { label: "공포", value: 110 },
-    { label: "음악", value: 120 },
-    { label: "미스터리", value: 130 },
-    { label: "로맨스", value: 140 },
-    { label: "SF", value: 150 },
-    { label: "TV 영화", value: 160 },
-    { label: "스릴러", value: 170 },
-    { label: "전쟁", value: 180 },
-    { label: "서부", value: 190 },
+    { label: "액션", value: 28 },
+    { label: "모험", value: 12 },
+    { label: "애니메이션", value: 16 },
+    { label: "코미디", value: 35 },
+    { label: "범죄", value: 80 },
+    { label: "다큐멘터리", value: 99 },
+    { label: "드라마", value: 18 },
+    { label: "가족", value: 10751 },
+    { label: "판타지", value: 14 },
+    { label: "역사", value: 36 },
+    { label: "공포", value: 27 },
+    { label: "음악", value: 10402 },
+    { label: "미스터리", value: 9648 },
+    { label: "로맨스", value: 10749 },
+    { label: "SF", value: 878 },
+    { label: "TV 영화", value: 10770 },
+    { label: "스릴러", value: 53 },
+    { label: "전쟁", value: 10752 },
+    { label: "서부", value: 37 },
   ];
 
   // 영화 정렬 (인기순)
   const [sortOrder, setSortOrder] = useState("highToLow");
   const [sortedMovies, setSortedMovies] = useState([]);
-  console.log(sortedMovies);
 
   const handleSortOrderChange = (e) => setSortOrder(e.target.value);
 
@@ -90,6 +77,7 @@ const MoviePage = () => {
     setSelectedGenre(e.target.value);
   };
 
+  // 영화 정렬 (인기순)
   useEffect(() => {
     if (data) {
       const sortedResults = [...data.results].sort((a, b) => {
@@ -99,9 +87,17 @@ const MoviePage = () => {
           return a.popularity - b.popularity;
         }
       });
-      setSortedMovies(sortedResults);
+
+      // 영화 정렬 (장르별)
+      const filteredMovies = selectedGenre
+        ? sortedResults.filter((movie) =>
+            movie.genre_ids.includes(selectedGenre)
+          )
+        : sortedResults;
+
+      setSortedMovies(filteredMovies);
     }
-  }, [data, sortOrder]);
+  }, [data, sortOrder, selectedGenre]);
 
   if (isLoading) {
     return (
